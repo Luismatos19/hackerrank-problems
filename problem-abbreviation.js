@@ -1,18 +1,18 @@
 const dataProcess = (input) =>  {
-    const lines = input.split("\n");
+    var lines = input.split("\n");
 
     function readLine(){
-        const num = 0;
+        var num = 0;
         this.nxLn = () =>{
             return num++;
         }
     }
 
-    const bts = new readLine();
+    var bts = new readLine();
 
-    const line = parseInt(lines[bts.nxLn()]);
+    var line = parseInt(lines[bts.nxLn()]);
 
-    const isLowerCase = function(value){
+    var isLowerCase = function(value){
         if(value.charCodeAt(0)>96){
             return true;
         } else {
@@ -20,8 +20,8 @@ const dataProcess = (input) =>  {
         }
     }
 
-    const containsUpperCase = function(value){
-        for(const i=0;i<value.length;i++){
+    var containsUpperCase = function(value){
+        for(var i=0;i<value.length;i++){
             if(!isLowerCase(value.substr(i,1))){
                 return true;
             }
@@ -30,23 +30,23 @@ const dataProcess = (input) =>  {
     }
 
     while (line!==0) {
-        const a = lines[bts.nxLn()];
-        const b = lines[bts.nxLn()];
+        var a = lines[bts.nxLn()];
+        var b = lines[bts.nxLn()];
 
-        const conditionA = true;
+        var conditionA = true;
 
         b.split("").forEach(val=>{
-            const index = a.indexOf(val);
+            var index = a.indexOf(val);
             if(index==-1){
                 index = a.indexOf(val.toLowerCase());
             }
             if(index==-1){
                 conditionA = false;
             }
-            if(containsUpperCase(a.substr(0,ind))){
+            if(containsUpperCase(a.substr(0,index))){
                 conditionA = false;
             }
-            a = a.substr(ind+1);
+            a = a.substr(index+1);
         });
 
         if(containsUpperCase(a)){
